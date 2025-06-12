@@ -9,13 +9,13 @@ use Validator\Contracts\Interfaces\Validator as IValidator;
 final class Validator implements IValidator {
     private array $errors = [];
 
-    public function validate(object $object): bool {
-        $reflection = new ReflectionClass($object);
+    public function validate(object|string $class): bool {
+        $reflection = new ReflectionClass($class);
 
         foreach ($reflection->getProperties() as $property) {
             $property->setAccessible(true);
             
-            $value = $property->getValue($object);
+            $value = $property->getValue($class);
 
             foreach ($property->getAttributes() as $attribute) {
                 $parsedNamespace = explode("\\", $attribute->getName());
@@ -24,7 +24,7 @@ final class Validator implements IValidator {
 
                 $validator = $attribute->newInstance();
 
-                if (!$validator->isValid($value, $object)) {
+                if (!$validator->isValid($value, $class)) {
                     $this->errors[$property->getName()][$action] = $validator->getMessage(
                         $property->getName(),
                         $value
