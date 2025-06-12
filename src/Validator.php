@@ -20,7 +20,7 @@ final class Validator implements IValidator {
             foreach ($property->getAttributes() as $attribute) {
                 $parsedNamespace = explode("\\", $attribute->getName());
 
-                $action = strtolower(end($parsedNamespace));
+                $action = end($parsedNamespace);
 
                 $validator = $attribute->newInstance();
 
