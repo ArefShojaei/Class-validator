@@ -1,0 +1,18 @@
+{
+    "name": "arefshojaei/class-validator",
+    "description": "",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Validator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ArefShojaei",
+            "email": "arefshojaei82dev@gmail.com"
+        }
+    ],
+    "require": {}
+}
