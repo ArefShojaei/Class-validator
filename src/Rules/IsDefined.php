@@ -7,7 +7,7 @@ use Validator\Validations\ValidationProperty;
 
 
 #[Attribute(Attribute::TARGET_PROPERTY)]
-final class Required extends ValidationProperty {
+final class IsDefined extends ValidationProperty {
     public function __construct(
         private string $message = ""
     ) {}

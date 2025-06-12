@@ -7,13 +7,13 @@ use Validator\Validations\ValidationProperty;
 
 
 #[Attribute(Attribute::TARGET_PROPERTY)]
-final class Required extends ValidationProperty {
+final class IsEmail extends ValidationProperty {
     public function __construct(
         private string $message = ""
     ) {}
 
     public function isValid(mixed $value, object $object): bool {
-        return isset($value) ? true : false;
+        return preg_match("/\@gmail\.com/", $value) ? true : false;
     }
 
     public function getMessage(string $field, mixed $value): string {

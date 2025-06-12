@@ -7,13 +7,13 @@ use Validator\Validations\ValidationProperty;
 
 
 #[Attribute(Attribute::TARGET_PROPERTY)]
-final class Required extends ValidationProperty {
+final class IsJSON extends ValidationProperty {
     public function __construct(
         private string $message = ""
     ) {}
 
     public function isValid(mixed $value, object $object): bool {
-        return isset($value) ? true : false;
+        return json_decode($value) ? true : false;
     }
 
     public function getMessage(string $field, mixed $value): string {

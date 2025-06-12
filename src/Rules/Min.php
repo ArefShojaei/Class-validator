@@ -1,6 +1,6 @@
 <?php
 
-namespace Validator\Attributes;
+namespace Validator\Rules;
 
 use Attribute;
 use Validator\Validations\ValidationProperty;

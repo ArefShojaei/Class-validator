@@ -7,13 +7,13 @@ use Validator\Validations\ValidationProperty;
 
 
 #[Attribute(Attribute::TARGET_PROPERTY)]
-final class Required extends ValidationProperty {
+final class IsEmpty extends ValidationProperty {
     public function __construct(
         private string $message = ""
     ) {}
 
     public function isValid(mixed $value, object $object): bool {
-        return isset($value) ? true : false;
+        return empty($value) ? true : false;
     }
 
     public function getMessage(string $field, mixed $value): string {

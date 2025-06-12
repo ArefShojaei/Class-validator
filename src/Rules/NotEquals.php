@@ -7,13 +7,14 @@ use Validator\Validations\ValidationProperty;
 
 
 #[Attribute(Attribute::TARGET_PROPERTY)]
-final class Required extends ValidationProperty {
+final class NotEquals extends ValidationProperty {
     public function __construct(
+        private string $expected,
         private string $message = ""
     ) {}
 
-    public function isValid(mixed $value, object $object): bool {
-        return isset($value) ? true : false;
+    public function isValid(mixed $actual, object $object): bool {
+        return $actual !== $this->expected ? true : false;
     }
 
     public function getMessage(string $field, mixed $value): string {
