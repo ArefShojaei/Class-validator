@@ -15,7 +15,7 @@ final class Max extends ValidationProperty {
     ) {}
 
     public function isValid(mixed $value, object $object): bool {
-        return (strlen($value) >= $this->length) ? true : false;
+        return (strlen($value) <= $this->length) ? true : false;
     }
 
     public function getMessage(string $field, mixed $value): string {
