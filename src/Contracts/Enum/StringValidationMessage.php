@@ -13,7 +13,7 @@ enum StringValidationMessage: string {
     case IsNotIn = "The Value must not be one of the specified options!";
     case IsJSON = "The Value must be a valid JSON object!";
     case IsLowercase = "The Value must be in lowercase!";
-    case IsUppercase = "The Value must be in lowercase!";
+    case IsUppercase = "The Value must be in uppercase!";
     case IsString = "The Value must be a string!";
     case IsUrl = "The Value must be a valid URL!";
     case Length = "The Value must have the specified length!";
