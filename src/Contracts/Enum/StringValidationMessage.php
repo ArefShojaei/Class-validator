@@ -14,9 +14,10 @@ enum StringValidationMessage: string {
     case IsJSON = "The Value must be a valid JSON object!";
     case IsLowercase = "The Value must be in lowercase!";
     case IsUppercase = "The Value must be in lowercase!";
-    case IsString = "The Value must be in uppercase!";
+    case IsString = "The Value must be a string!";
     case IsUrl = "The Value must be a valid URL!";
     case Length = "The Value must have the specified length!";
     case Max = "The Value must not exceed the maximum limit.!";
     case Min = "The Value must meet or exceed the minimum limit!";
+    case IsDate = "The Value must be date format!";
 }
