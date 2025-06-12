@@ -7,7 +7,7 @@ use Validator\Validations\ValidationProperty;
 
 
 #[Attribute(Attribute::TARGET_PROPERTY)]
-final class NotContains extends ValidationProperty {
+final class IsNotIn extends ValidationProperty {
     public function __construct(
         private array $values,
         private string $message = ""
