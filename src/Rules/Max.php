@@ -3,6 +3,7 @@
 namespace Validator\Rules;
 
 use Attribute;
+use Validator\Contracts\Enum\StringValidationMessage;
 use Validator\Validations\ValidationProperty;
 
 
@@ -18,6 +19,6 @@ final class Max extends ValidationProperty {
     }
 
     public function getMessage(string $field, mixed $value): string {
-        return !empty($this->message) ? $this->message : "Reading from Enum...";
+        return !empty($this->message) ? $this->message : StringValidationMessage::Max->value;
     }
 }
