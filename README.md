@@ -2,6 +2,8 @@
 
 
 ```php
+<?php
+
 use Validator\Validator;
 use Validator\Rules\{
     Required,
