@@ -5,7 +5,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Val idator\\": "src/"
+            "Validator\\": "src/"
         }
     },
     "autoload-dev": {
