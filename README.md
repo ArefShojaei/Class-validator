@@ -55,3 +55,16 @@ echo "[INFO] The User is valid";
 
     // )
 ```
+
+
+## **Installation**
+
+#### Using Composer
+```bash
+composer require arefshojaei/class-validator
+```
+
+#### Using GIT
+```bash
+git clone https://github.com/ArefShojaei/Class-validator
+```
