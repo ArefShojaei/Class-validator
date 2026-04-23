@@ -1,6 +1,4 @@
-<h1 align="center">Class Validator</h1>
-
-
+# Quick Example
 ```php
 <?php
 
@@ -44,16 +42,16 @@ $isValidUser = $validator->validate($user);
 if (!$isValidUser) print_r($validator->getErrors());
 
 echo "[INFO] The User is valid";
-
-# Validation errors:
-    // Array
-    // (
-    //     [email] => Array
-    //         (
-    //             [IsEmail] => Invalid Email address!
-    //         )
-
-    // )
+```
+> Validation error data
+```bash
+Array
+(
+    [email] => Array
+    (
+        [IsEmail] => Invalid Email address!
+    )
+)
 ```
 
 
@@ -66,5 +64,5 @@ composer require arefshojaei/class-validator
 
 #### Using GIT
 ```bash
-git clone https://github.com/ArefShojaei/Class-validator
+git clone https://github.com/ArefShojaei/Class-validator.git
 ```
