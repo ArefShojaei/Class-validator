@@ -1,8 +1,9 @@
 {
     "name": "arefshojaei/class-validator",
-    "description": "",
+    "description": "PHP Class validator ( Attribute base ) library",
     "type": "library",
     "license": "MIT",
+    "version": "1.4.3",
     "autoload": {
         "psr-4": {
             "Validator\\": "src/"
