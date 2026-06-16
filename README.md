@@ -2,7 +2,7 @@
     <h1>🛡️ Class Validator for PHP</h1>
 
 <p>
-    A lightweight, powerful, and modern PHP 8+ validation library that uses 
+    A lightweight, powerful, and modern PHP 8.2+ validation library that uses 
     <strong>Attributes</strong> to define validation rules directly inside your classes.
 </p>
 
