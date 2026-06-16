@@ -1,25 +1,52 @@
-# Class Validator for PHP
-[![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/ArefShojaei/Class-validator)
+<div align="center">
+    <h1>🛡️ Class Validator for PHP</h1>
 
-A simple, lightweight, and powerful validation library for PHP 8+ classes using attributes.
+<p>
+    A lightweight, powerful, and modern PHP 8+ validation library that uses 
+    <strong>Attributes</strong> to define validation rules directly inside your classes.
+</p>
 
-## Installation
+[![PHP Version](https://img.shields.io/badge/PHP-8%2B-blue.svg)](https://php.net)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Packagist](https://img.shields.io/badge/Packagist-Class--Validator-orange.svg)](https://packagist.org/packages/arefshojaei/class-validator)
 
-### Using Composer
+</div>
+
+---
+
+## ✨ Features
+
+* 🏷️ Attribute-based validation using native PHP 8 attributes
+* 🧩 Validate entire objects and class properties
+* 📝 Custom error messages for every validation rule
+* ⚡ Static validation methods for quick checks
+* 📦 Simple Composer installation
+* 🪶 Lightweight with zero unnecessary dependencies
+* 🔒 Strongly typed and modern PHP syntax
+* 🛠️ Easy to extend with custom validation rules
+
+---
+
+## 📥 Installation
+
+### Install using Composer
+
 ```bash
 composer require arefshojaei/class-validator
 ```
 
-### Using Git
+### Clone from GitHub
+
 ```bash
 git clone https://github.com/ArefShojaei/Class-validator.git
+cd Class-validator
 ```
 
-## Basic Usage
+---
 
-Define your validation rules directly on your class properties using PHP 8 attributes.
+## 🚀 Quick Start
 
-### 1. Define your Class with Validation Rules
+### 1. Create a DTO or Entity with Validation Attributes
 
 ```php
 <?php
@@ -40,48 +67,42 @@ class User
     #[Length(min: 2, max: 50)]
     public string $name;
 
-    #[IsEmail]
     #[Required]
+    #[IsEmail]
     public string $email;
 
-    #[IsPositive]
-    #[IsNumber]
     #[Required]
+    #[IsNumber]
+    #[IsPositive]
     public int $age;
 }
 ```
 
-### 2. Validate an Instance of the Class
+---
 
-Instantiate your class, create a `Validator` object, and call the `validate()` method.
+### 2. Validate the Object
 
 ```php
-<?php
-
 use Validator\Validator;
 
-$user = new User;
+$user = new User();
 
 $user->name = "Aref";
-$user->email = "this-is-not-an-email"; // Invalid value
+$user->email = "invalid-email";
 $user->age = 31;
 
-$validator = new Validator;
+$validator = new Validator();
+
 $isValid = $validator->validate($user);
 
 if (!$isValid) {
     print_r($validator->getErrors());
-} else {
-    echo "The user object is valid!";
 }
 ```
 
-### 3. Get Validation Errors
+Output:
 
-If validation fails, the `getErrors()` method will return an associative array of errors.
-
-**Output:**
-```
+```txt
 Array
 (
     [email] => Array
@@ -91,89 +112,179 @@ Array
 )
 ```
 
-## Available Rules
+---
 
-The library provides a comprehensive set of validation rules.
+## 🧩 Available Validation Rules
 
-| Rule | Parameters | Description |
-| --- | --- | --- |
-| `Contains` | `array $values` | Checks if the property (array) contains all the specified values. |
-| `Count` | `int $size` |  Validates that an array has an exact number of elements. |
-| `Equals` | `string $expected` | Checks if the property's value is strictly equal to the given value. |
-| `IsArray` | | Checks if the property is an array. |
-| `IsBoolean` | | Checks if the property is a boolean. |
-| `IsDate` | | Checks if the property is a valid date string (`YYYY-MM-DD`, `YYYY/MM/DD`). |
-| `IsEmail` | | Checks if the property is a valid Gmail address. |
-| `IsEmpty` | | Checks if the property is empty (e.g., `""`, `0`, `[]`, `null`). |
-| `IsIn` | `array $values` | Checks if the property's string value contains all substrings from the given array. |
-| `IsInstance` | `string $class` | Checks if the property is an instance of a given class. |
-| `IsJSON` | | Checks if the property is a valid JSON string. |
-| `IsLowercase` | | Checks if all characters in the string are lowercase. |
-| `IsNegative` | | Checks if the numeric property is a negative number (or zero). |
-| `IsNotEmpty` | | Checks if the property is not empty. |
-| `IsNotIn` | `array $values` | Checks if the property's string value does not contain the substrings from the given array. |
-| `IsNull` | | Checks if the property is `null`. |
-| `IsNumber` | | Checks if the property is an integer. |
-| `IsObject` | | Checks if the property is an object. |
-| `IsPositive` | | Checks if the numeric property is a positive number (greater than zero). |
-| `IsString` | | Checks if the property is a string. |
-| `IsUppercase` | | Checks if all characters in the string are uppercase. |
-| `IsUrl` | | Checks if the property is a valid URL. |
-| `Length` | `int $min, int $max` | Checks if the string length is between a `min` and `max` value (inclusive). |
-| `Max` | `int $length` | Checks if the string length is less than or equal to a maximum value. |
-| `Min` | `int $length` | Checks if the string length is greater than or equal to a minimum value. |
-| `NotContains` | `array $values` | Checks if the property (array) does not contain the specified values. |
-| `NotEquals` | `string $expected` | Checks if the property's value is not strictly equal to the given value. |
-| `Required` | | Checks that the property has been set (is not `unset`). |
-| `Unique` | | Checks if all values in an array are unique. |
+### String Rules
 
+| Rule        | Description                                 |
+| ----------- | ------------------------------------------- |
+| IsString    | Checks if the value is a string             |
+| Length      | Validates minimum and maximum string length |
+| Min         | Checks minimum string length                |
+| Max         | Checks maximum string length                |
+| IsLowercase | Checks lowercase strings                    |
+| IsUppercase | Checks uppercase strings                    |
+| Equals      | Checks exact equality                       |
+| NotEquals   | Checks inequality                           |
 
-## Custom Error Messages
+---
 
-You can override the default error message for any rule by passing it as the `message` argument.
+### Number Rules
+
+| Rule       | Description                     |
+| ---------- | ------------------------------- |
+| IsNumber   | Checks if the value is a number |
+| IsPositive | Checks positive numbers         |
+| IsNegative | Checks negative numbers         |
+
+---
+
+### Collection Rules
+
+| Rule        | Description                                |
+| ----------- | ------------------------------------------ |
+| IsArray     | Validates arrays                           |
+| Count       | Checks array size                          |
+| Contains    | Checks if an array contains values         |
+| NotContains | Checks if an array does not contain values |
+| Unique      | Ensures all array values are unique        |
+
+---
+
+### Type & State Rules
+
+| Rule       | Description                        |
+| ---------- | ---------------------------------- |
+| Required   | Checks whether a property exists   |
+| IsNull     | Checks null values                 |
+| IsNotEmpty | Checks that the value is not empty |
+| IsEmpty    | Checks empty values                |
+| IsBoolean  | Validates booleans                 |
+| IsObject   | Validates objects                  |
+| IsInstance | Checks object instance type        |
+
+---
+
+### Format Rules
+
+| Rule    | Description               |
+| ------- | ------------------------- |
+| IsEmail | Validates email addresses |
+| IsUrl   | Validates URLs            |
+| IsDate  | Validates date formats    |
+| IsJSON  | Validates JSON strings    |
+| IsIn    | Checks allowed values     |
+| IsNotIn | Checks forbidden values   |
+
+---
+
+## 🎨 Custom Error Messages
+
+Override default validation messages:
 
 ```php
-<?php
-
 use Validator\Rules\Required;
 use Validator\Rules\IsEmail;
 
 class User
 {
-    #[Required(message: "Please enter your name.")]
+    #[Required(message: "Name is required.")]
     public string $name;
-    
-    #[IsEmail(message: "The email you entered is not valid.")]
-    #[Required(message: "Email is a required field.")]
+
+    #[Required(message: "Email is required.")]
+    #[IsEmail(message: "Please enter a valid email address.")]
     public string $email;
 }
 ```
 
-## Static Validation
+---
 
-For quick, one-off validations without the context of a class, you can call validation rules statically.
+## ⚡ Static Validation
 
-- If the validation passes, it returns `true`.
-- If the validation fails, it returns the error message string.
+Use validation rules without creating a class:
 
 ```php
-<?php
-
 use Validator\Validator;
 
-// Successful validation
-$result1 = Validator::isEmail('test@gmail.com');
-var_dump($result1); // bool(true)
+Validator::isEmail("test@gmail.com");
+// true
 
-// Failed validation
-$result2 = Validator::isEmail('invalid-email');
-var_dump($result2); // string(22) "Invalid Email address!"
+Validator::isEmail("invalid-email");
+// "Invalid Email address!"
 
-// Validation with parameters
-$result3 = Validator::length('short', 10, 20);
-var_dump($result3); // string(40) "The Value must have the specified length!"
+Validator::length("Hello", 10, 20);
+// "The value must have the specified length!"
 ```
 
-## License
+---
 
-This project is licensed under the MIT License.
+## 💡 Example Use Cases
+
+This library is useful for:
+
+* Request DTO validation
+* API input validation
+* Configuration validation
+* Domain entities validation
+* Form data validation
+* Command-line input validation
+
+---
+
+## 🔥 Why Class Validator?
+
+Unlike traditional validation approaches that separate rules from data, Class Validator keeps validation rules close to your class properties using PHP Attributes.
+
+This provides:
+
+* Better readability
+* Cleaner architecture
+* Less duplicated code
+* Better IDE support
+* More maintainable applications
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome.
+
+1. Fork the repository
+2. Create a feature branch:
+
+```bash
+git checkout -b feature/amazing-feature
+```
+
+3. Commit your changes:
+
+```bash
+git commit -m "Add amazing feature"
+```
+
+4. Push your branch:
+
+```bash
+git push origin feature/amazing-feature
+```
+
+5. Open a Pull Request.
+
+---
+
+## 👨‍💻 Author
+
+**Aref Shojaei**
+- 📧 Email: [arefshojaei82@gmail.com](mailto:arefshojaei82@gmail.com)
+- 🐙 GitHub: [@ArefShojaei](https://github.com/ArefShojaei)
+- 📦 Packagist: [arefshojaei/class-validator](https://packagist.org/packages/arefshojaei/class-validator)
+
+---
+
+## ⭐ Show Your Support
+
+If this project helps your PHP development workflow, consider giving it a **Star ⭐** on GitHub.
+
+Your support helps the project grow.
